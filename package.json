@@ -4,7 +4,9 @@
   "version": "0.1.1",
   "scripts": {
     "build": "vite build",
-    "dev": "vite"
+    "dev": "vite",
+    "lint": "prettier --check .",
+    "format": "yarn lint --write"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",

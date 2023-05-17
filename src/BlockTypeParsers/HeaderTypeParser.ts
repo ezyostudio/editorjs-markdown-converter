@@ -1,5 +1,5 @@
-import { BlockToolData, OutputBlockData } from "@editorjs/editorjs"
-import { Content, Heading } from "mdast"
+import { BlockToolData, OutputBlockData } from '@editorjs/editorjs'
+import { Content, Heading } from 'mdast'
 
 export function headerToMarkdown(blocks: BlockToolData) {
   switch (blocks.level) {
@@ -31,7 +31,7 @@ export function markdownToHeader(content: Heading): OutputBlockData | undefined 
             level: 1,
             text: item.value,
           },
-          type: "header",
+          type: 'header',
         }
       })
 
@@ -43,7 +43,7 @@ export function markdownToHeader(content: Heading): OutputBlockData | undefined 
             level: 2,
             text: item.value,
           },
-          type: "header",
+          type: 'header',
         }
       })
 
@@ -55,7 +55,7 @@ export function markdownToHeader(content: Heading): OutputBlockData | undefined 
             level: 3,
             text: item.value,
           },
-          type: "header",
+          type: 'header',
         }
       })
 
@@ -67,7 +67,7 @@ export function markdownToHeader(content: Heading): OutputBlockData | undefined 
             level: 4,
             text: item.value,
           },
-          type: "header",
+          type: 'header',
         }
       })
 
@@ -79,7 +79,7 @@ export function markdownToHeader(content: Heading): OutputBlockData | undefined 
             level: 5,
             text: item.value,
           },
-          type: "header",
+          type: 'header',
         }
       })
 
@@ -91,7 +91,7 @@ export function markdownToHeader(content: Heading): OutputBlockData | undefined 
             level: 6,
             text: item.value,
           },
-          type: "header",
+          type: 'header',
         }
       })
 

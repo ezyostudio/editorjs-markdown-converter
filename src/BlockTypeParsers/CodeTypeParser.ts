@@ -1,5 +1,5 @@
 export function parseCodeToMarkdown(blocks) {
-  return `\`\`\`\n${blocks.code}\n\`\`\`\n`;
+  return `\`\`\`\n${blocks.code}\n\`\`\`\n`
 }
 
 export function parseMarkdownToCode(blocks) {
@@ -8,7 +8,7 @@ export function parseMarkdownToCode(blocks) {
       code: blocks.value,
     },
     type: 'code',
-  };
+  }
 
-  return codeData;
+  return codeData
 }

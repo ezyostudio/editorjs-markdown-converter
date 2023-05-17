@@ -1,14 +1,14 @@
-import { remark } from "remark"
+import { remark } from 'remark'
 
-import { headerToMarkdown, markdownToHeader } from "./BlockTypeParsers/HeaderTypeParser"
-import { parseMarkdownToParagraph, parseParagraphToMarkdown } from "./BlockTypeParsers/ParagraphTypeParser"
-import { parseListToMarkdown, parseMarkdownToList } from "./BlockTypeParsers/ListTypeParser"
-import { parseDelimiterToMarkdown, parseMarkdownToDelimiter } from "./BlockTypeParsers/DelimiterTypeParser"
-import { parseCodeToMarkdown, parseMarkdownToCode } from "./BlockTypeParsers/CodeTypeParser"
-import { parseMarkdownToQuote, parseQuoteToMarkdown } from "./BlockTypeParsers/QuoteTypeParser"
-import { parseImageToMarkdown } from "./BlockTypeParsers/ImageTypeParser"
-import { parseCheckboxToMarkdown } from "./BlockTypeParsers/CheckboxTypeParser"
-import { OutputBlockData, OutputData } from "@editorjs/editorjs"
+import { headerToMarkdown, markdownToHeader } from './BlockTypeParsers/HeaderTypeParser'
+import { parseMarkdownToParagraph, parseParagraphToMarkdown } from './BlockTypeParsers/ParagraphTypeParser'
+import { parseListToMarkdown, parseMarkdownToList } from './BlockTypeParsers/ListTypeParser'
+import { parseDelimiterToMarkdown, parseMarkdownToDelimiter } from './BlockTypeParsers/DelimiterTypeParser'
+import { parseCodeToMarkdown, parseMarkdownToCode } from './BlockTypeParsers/CodeTypeParser'
+import { parseMarkdownToQuote, parseQuoteToMarkdown } from './BlockTypeParsers/QuoteTypeParser'
+import { parseImageToMarkdown } from './BlockTypeParsers/ImageTypeParser'
+import { parseCheckboxToMarkdown } from './BlockTypeParsers/CheckboxTypeParser'
+import { OutputBlockData, OutputData } from '@editorjs/editorjs'
 
 export default class EditorJSMarkdownConverter {
   public static toBlocks(data: string): OutputBlockData[] {
@@ -18,17 +18,17 @@ export default class EditorJSMarkdownConverter {
     // Iterating over the pared remarkjs syntax tree and executing the json parsers
     parsedMarkdown.children.forEach((item) => {
       switch (item.type) {
-        case "heading":
+        case 'heading':
           return editorData.push(markdownToHeader(item))
-        case "paragraph":
+        case 'paragraph':
           return editorData.push(...parseMarkdownToParagraph(item))
-        case "list":
+        case 'list':
           return editorData.push(parseMarkdownToList(item))
-        case "thematicBreak":
+        case 'thematicBreak':
           return editorData.push(parseMarkdownToDelimiter())
-        case "code":
+        case 'code':
           return editorData.push(parseMarkdownToCode(item))
-        case "blockquote":
+        case 'blockquote':
           return editorData.push(parseMarkdownToQuote(item))
         default:
           break
@@ -36,36 +36,36 @@ export default class EditorJSMarkdownConverter {
     })
 
     // Filter through array and remove empty objects
-    return editorData.filter((value) => typeof value !== "undefined") as OutputBlockData[]
+    return editorData.filter((value) => typeof value !== 'undefined') as OutputBlockData[]
   }
 
-  public static toMarkdown(data: OutputData["blocks"]) {
+  public static toMarkdown(data: OutputData['blocks']) {
     const parsedData = data.map((item) => {
       // iterate through editor data and parse the single blocks to markdown syntax
       switch (item.type) {
-        case "header":
+        case 'header':
           return headerToMarkdown(item.data)
-        case "paragraph":
+        case 'paragraph':
           return parseParagraphToMarkdown(item.data)
-        case "list":
+        case 'list':
           return parseListToMarkdown(item.data)
-        case "delimiter":
+        case 'delimiter':
           return parseDelimiterToMarkdown()
-        case "image":
+        case 'image':
           return parseImageToMarkdown(item.data)
-        case "quote":
+        case 'quote':
           return parseQuoteToMarkdown(item.data)
-        case "checkbox":
+        case 'checkbox':
           return parseCheckboxToMarkdown(item.data)
-        case "code":
+        case 'code':
           return parseCodeToMarkdown(item.data)
-        case "checklist":
+        case 'checklist':
           return parseCheckboxToMarkdown(item.data)
         default:
           break
       }
     })
 
-    return parsedData.join("\n")
+    return parsedData.join('\n')
   }
 }

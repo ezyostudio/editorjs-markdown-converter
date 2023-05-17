@@ -1,12 +1,12 @@
 export function parseCheckboxToMarkdown(blocks) {
-  let items = {};
+  let items = {}
 
   items = blocks.items.map((item) => {
     if (item.checked === true) {
-      return `- [x] ${item.text}`;
+      return `- [x] ${item.text}`
     }
-    return `- [ ] ${item.text}`;
-  });
+    return `- [ ] ${item.text}`
+  })
 
-  return items.join('\n');
+  return items.join('\n')
 }
