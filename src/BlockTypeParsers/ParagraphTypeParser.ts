@@ -2,7 +2,7 @@ import { unified } from 'unified'
 import rehypeParse from 'rehype-parse'
 import rehypeRemark from 'rehype-remark'
 import remarkStringify from 'remark-stringify'
-import { Paragraph } from 'mdast'
+import { Paragraph, PhrasingContent, StaticPhrasingContent } from 'mdast'
 import { OutputBlockData } from '@editorjs/editorjs'
 
 export function parseParagraphToMarkdown(paragraph) {
@@ -15,10 +15,10 @@ export function parseParagraphToMarkdown(paragraph) {
   return `${String(output)}\n`
 }
 
-function markdownToText(item) {
+function markdownToText(item: PhrasingContent) {
   if (item.type === 'text') return item.value
 
-  function processChildren(children) {
+  function processChildren(children: PhrasingContent[]) {
     let text = ''
     children.forEach((child) => {
       text += markdownToText(child)
@@ -28,7 +28,7 @@ function markdownToText(item) {
   }
 
   let text = ''
-  if (item.children && item.children.length > 0) {
+  if (Array.isArray(item.children) && item.children.length > 0) {
     switch (item.type) {
       case 'strong':
         text += `<b>${processChildren(item.children)}</b>`
@@ -74,7 +74,7 @@ export function parseMarkdownToParagraph(paragraphBlock: Paragraph) {
         currentParagraph.data.text += markdownToText(item)
         break
       case 'image':
-        if (currentParagraph.type === 'paragraph') {
+        if (currentParagraph?.type === 'paragraph') {
           paragraphs.push(currentParagraph)
           currentParagraph = null
         }
