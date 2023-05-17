@@ -6,8 +6,8 @@
     "build": "vite build",
     "dev": "vite"
   },
-  "main": "./dist/index.cjs.js",
-  "module": "./dist/index.es.js",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "devDependencies": {
     "@babel/core": "^7.21.8",
