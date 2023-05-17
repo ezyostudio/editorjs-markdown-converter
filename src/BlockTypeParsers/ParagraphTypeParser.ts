@@ -1,18 +1,8 @@
-import { unified } from 'unified'
-import rehypeParse from 'rehype-parse'
-import rehypeRemark from 'rehype-remark'
-import remarkStringify from 'remark-stringify'
-import { Paragraph, PhrasingContent, StaticPhrasingContent } from 'mdast'
-import { OutputBlockData } from '@editorjs/editorjs'
+import { BlockToolData, OutputBlockData } from '@editorjs/editorjs'
+import { Paragraph, PhrasingContent } from 'mdast'
 
-export function parseParagraphToMarkdown(paragraph) {
-  const output = unified()
-    .use(rehypeParse) // Parse HTML to a syntax tree
-    .use(rehypeRemark) // Turn HTML syntax tree to markdown syntax tree
-    .use(remarkStringify) // Serialize HTML syntax tree
-    .processSync(paragraph.text)
-
-  return `${String(output)}\n`
+export function parseParagraphToMarkdown(paragraph: BlockToolData) {
+  return `${paragraph.text}\n`
 }
 
 function markdownToText(item: PhrasingContent) {
