@@ -1,5 +1,5 @@
 {
-  "name": "@vingeraycn/editorjs-markdown-converter",
+  "name": "@vingeray/editorjs-markdown-converter",
   "description": "A data model convert between Markdown string and data of EditorJS",
   "version": "1.0.0",
   "scripts": {
