@@ -11,7 +11,7 @@ import { parseCheckboxToMarkdown } from "./BlockTypeParsers/CheckboxTypeParser"
 import { OutputBlockData, OutputData } from "@editorjs/editorjs"
 
 export default class EditorJSMarkdownConverter {
-  public static toBlocks(data: string) {
+  public static toBlocks(data: string): OutputBlockData[] {
     const editorData: (OutputBlockData | undefined)[] = []
     const parsedMarkdown = remark.parse(data)
 
@@ -36,7 +36,7 @@ export default class EditorJSMarkdownConverter {
     })
 
     // Filter through array and remove empty objects
-    return editorData.filter((value) => typeof value !== "undefined")
+    return editorData.filter((value) => typeof value !== "undefined") as OutputBlockData[]
   }
 
   public static toMarkdown(data: OutputData["blocks"]) {

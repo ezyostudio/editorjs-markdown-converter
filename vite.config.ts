@@ -1,10 +1,17 @@
+import typescript from "@rollup/plugin-typescript"
 import path from "path"
 import { defineConfig } from "vite"
 import pkg from "./package.json"
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [],
+  plugins: [
+    typescript({
+      tsconfig: "tsconfig.json",
+      rootDir: "src",
+      outDir: "dist",
+    }),
+  ],
   resolve: {
     alias: [
       { find: "@", replacement: path.resolve(__dirname, "./src") },
