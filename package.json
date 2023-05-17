@@ -9,6 +9,11 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "files": [
+    "./dist",
+    "README.md",
+    "package.json"
+  ],
   "devDependencies": {
     "@babel/core": "^7.21.8",
     "@editorjs/editorjs": "^2.27.0",
