@@ -1,7 +1,7 @@
 {
   "name": "@vingeray/editorjs-markdown-converter",
   "description": "A data model convert between Markdown string and data of EditorJS",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "scripts": {
     "build": "vite build",
     "dev": "vite"
