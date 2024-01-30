@@ -1,12 +1,13 @@
 {
-  "name": "@vingeray/editorjs-markdown-converter",
+  "name": "@ezyostudio/editorjs-markdown-converter",
   "description": "A data model convert between Markdown string and data of EditorJS",
   "version": "0.1.2",
   "scripts": {
     "build": "vite build",
     "dev": "vite",
     "lint": "prettier --check .",
-    "format": "yarn lint --write"
+    "format": "yarn lint --write",
+    "prepare": "vite build"
   },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
